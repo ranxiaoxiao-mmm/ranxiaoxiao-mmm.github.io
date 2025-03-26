@@ -89,5 +89,7 @@ export default defineConfig({
     },
 
   },
-
+  
+  base: '/',  // 必须设置为根路径
+  
 })

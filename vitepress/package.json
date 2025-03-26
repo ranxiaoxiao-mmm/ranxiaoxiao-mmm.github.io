@@ -1,8 +1,9 @@
 {
   "devDependencies": {
+    "vite": "^6.2.3",
     "vitepress": "^1.6.3"
   },
-  "type":"module",
+  "type": "module",
   "scripts": {
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",

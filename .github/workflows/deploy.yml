@@ -1,0 +1,37 @@
+name: Deploy VitePress to GitHub Pages
+
+on:
+  push:
+    branches: [ "main" ]  # 只在 main 分支推送时触发
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest  # 使用 GitHub 的 Ubuntu 虚拟机
+
+    steps:
+      # 步骤1：检出代码
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # 获取完整 git 历史（某些插件需要）
+
+      # 步骤2：设置 pnpm（如果用 npm 可删除此步）
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8  # 指定 pnpm 版本
+
+      # 步骤3：安装依赖
+      - name: Install dependencies
+        run: pnpm install  # 或 npm install
+
+      # 步骤4：构建项目
+      - name: Build
+        run: pnpm run docs:build  # 生成静态文件到 docs/.vitepress/dist
+
+      # 步骤5：部署到 gh-pages 分支
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}  # 自动鉴权
+          publish_dir: ./docs/.vitepress/dist  # 部署的目录
+          keep_files: false  # 清空 gh-pages 分支原有文件
+          force_orphan: true  # 强制清空历史记录
+          destination_branch: gh-pages  # 显式指定目标分支
