@@ -35,7 +35,7 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}  # 自动鉴权
-          publish_dir: ./docs/.vitepress/dist  # 部署的目录
+          publish_dir: ./vitepress/docs/.vitepress/dist  # 部署的目录
           keep_files: false  # 清空 gh-pages 分支原有文件
           force_orphan: true  # 强制清空历史记录
           publish_branch: gh-pages
