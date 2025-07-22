@@ -53,15 +53,16 @@ export default defineConfig({
           }
         ]
       },
-      { text: 'PHOTOS', link: '/markdown-examples', }
+      { text: 'PHOTOS', link: '/photos', }
     ],
 
     sidebar: [
       {
-        text: 'Examples',
+        text: 'MHc.Dairy',
         items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
+          { text: '随笔', link: '/markdown-examples' },
+          { text: '学记', link: '/api-examples' },
+          { text: '书录', link: '/book_md' }
         ]
       }
     ],
